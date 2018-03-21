@@ -18,10 +18,6 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-<<<<<<< HEAD
     path('', landing_view, name="home_page"),
     path('', include('accounts.urls')),
-=======
-    path('', include('shopping_list.authentication.urls') )
->>>>>>> [Feature #155906543] Added authentication app and setup urls.
 ]

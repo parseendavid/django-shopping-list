@@ -1,0 +1,180 @@
+{% load static %}
+{#<img src="{% static "my_app/example.jpg" %}" alt="My image"/>#}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="
+    {% static "main/img/favicon.png" %}"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="
+    {% static "main/img/apple-icon.png"%}" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Landing Page</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0,
+    user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,
+    200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <!-- CSS Files -->
+    <link href="{% static "main/css/bootstrap.min.css" %}" rel="stylesheet" />
+    <link href="{% static "main/css/now-ui-kit.css" %}"
+          rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="{% static "main/css/demo.css" %}" rel="stylesheet" />
+</head>
+
+<body class="landing-page sidebar-collapse">
+    <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
+        <div class="container">
+            <div class="navbar-translate">
+                <a class="navbar-brand" href="/" rel="tooltip"  data-placement="bottom">
+                    Home
+                </a>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end"
+                 id="navigation" data-nav-image="{% static "main/img/blurred-image-1.jpg" %}">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/parseendavid/django-shopping-list/issues">Have an issue?</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="wrapper">
+        <div class="page-header page-header-small">
+            <div class="page-header-image" data-parallax="true"
+                 style="background-image: url('{% static "main/img/bg6.jpg" %}')";>
+            </div>
+            <div class="container">
+                <div class="content-center">
+                    <h3 class="title">This is my small contribution to
+                        humanity
+                        ...</h3>
+                    <div class="text-center">
+                        <a href="#" class="btn btn-primary btn-icon btn-round">
+                            <i class="fa fa-facebook-square"></i>
+                        </a>
+                        <a href="#" class="btn btn-primary btn-icon btn-round">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                        <a href="#" class="btn btn-primary btn-icon btn-round">
+                            <i class="fa fa-google-plus"></i>
+                        </a>
+                    </div>
+                    <br>
+                    <div class="text-center btn-group-lg">
+                        <a href="{% url 'accounts:signup' %}"
+                           class="btn "style="background-color: #4CD964"
+                        >Signup</a>
+                        <a href="{% url 'accounts:login' %}"
+                           class="btn "
+                           style="background-color: #00bbff; width: 103px"
+                        >Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section section-about-us">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto text-center">
+                        <h2 class="title">What is this all about?</h2>
+                        <h5 class="description">Learn to manage finances well by starting with small steps. Then eventually, you'll get the hang of it and realize how advantageous it is to have a shopping list for your next  trip to the mall. So the next time you plan your needed items, don't forget about these advantages. “Make me a shopping list?” - no, thank you. You can handle it. We hope that through these tips, you'll be able to master the art of budgeting slowly but surely.</h5>
+                    </div>
+                </div>
+                <div class="separator separator-primary"></div>
+                <div class="section-story-overview">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="image-container image-left"
+                                 style="background-image: url('{% static "main/img/login.jpg" %}')";>
+                                <!-- First image on the left side -->
+                            </div>
+                            <!-- Second image on the left side of the article -->
+                            <div class="image-container"
+                                 style="background-image: url('{% static "main/img/bg3.jpg"%}')";></div>
+                        </div>
+                        <div class="col-md-5">
+                            <!-- First image on the right side, above the article -->
+                            <div class="image-container image-right"
+                                 style="background-image: url('{% static "main/img/bg1.jpg" %}')";></div>
+                            <h5>
+                            <strong>
+                                If you still need a little convincing, we give you 10 reasons why you should make shopping list in a regular basis:
+                            </strong>
+                            </h5>
+                            <p>
+                                1. <strong>Failing to plan, is planning to
+                                fail.</strong>
+                                            Making a list before you go shopping will help you think ahead about your purchases. By doing so, you’ll have the chance to make specific shopping goals. If you plan what you need to buy, it will be less likely that you’ll end up buying the whole store.
+                            </p>
+                            <p>
+                                2. <strong>If you create a shopping list, you will be able to distinguish your needs from your wants.</strong> Writing it down will help you determine if you’ll just buy something just the sake of buying it. In the process of making  a shopping list, you will see that some things you thought of buying is something that you don’t really need. Seeing everything written in a paper is better than just making a list on your mind.
+                            </p>
+                            <p>
+                                3. <strong>You’ll save money.</strong> Once you have written your shopping list, you’ll have a good idea of how much are you going to shell out in a shopping trip. Since you already know what you want, you’ll be able to trim it down to what you really need and most importantly what will fit your budget. By knowing the expected amount you’ll need to buy the things on your shopping list, you will also be able to prepare for it. Got coupons, are there special offers, BOGO? You got it!
+                            </p>
+                            <p>
+                                4. <strong>Time saver.</strong> Time is precious and expensive. Having a shopping list will help you save time. You don't have to roam around just to figure out if you need or miss anything. You’ll save more time as you get in the store to get what you need and out once everything in your list is complete. Create a shopping list will not take you more than an hour, so do it.
+                            </p>
+                            <p>
+                                5. <strong>Health Benefits</strong> - So you have a list of things you need to buy, what's next is figuring out what is best for your health. Say you need vegetables - you can evaluate if choosing organic vegetables is better and if it'll still fit your budget. We tend to just get anything we see or crave for if we don’t have a guide. By having a list, you’ll have the freedom to choose the much healthier option that will still fit your budget. Having healthy food will lead to a healthier body.
+                            </p>
+                            <p>
+                                6. <strong>More fun, less stress.</strong> With a list, you can save yourself from stress. You’ll be able to complete your supply at home. All you have to do is to go to the store, take a look at your list, follow your list, go home and relax. It’s always better if organised! No more stress-buying. Who doesn't want that?
+                            </p>
+                            <p>
+                                7. <strong>Group Effort.</strong> If you are a couple or has a family, this will be a great activity for you. It encourages input from all the members. You can discuss to your partner whether or not a specific item is needed or not. If you have a child, he or she can add something on the list upon your approval. This will help build bonding and strengthen relationships. You can even teach your child to determine a need from a want. Things like these are something that you can earn from making a online shopping list. It is not as obvious as the others, but you gain a lot of things more than you think.
+                            </p>
+                            <p>
+                                8. <strong>No more panic buying.</strong> Lesser last minute goods mean reduced waste. By having a list, you’ll have lesser chance of getting things you don’t need and are most likely the things that will just end up going to the waste basket.  You are sure that everything you buy is a need. Say goodbye to last-minute purchases, over-purchasing and over-spending. With a shopping list, you know what you need, how much you need and you are sure that you’ll consume and use it.
+                            </p>
+                            <p>
+                                9. <strong>You can assign</strong> who’s going to buy, you can distribute the responsibility to the household without having to worry if you’ll get everything that you need. You don't need to worry about whether or not the person assigned forgot to buy something. S/He can just simply cross out the things bought and identify the ones still needed to be bought. With that, you can relax and peacefully focus on other stuff you need to do. It decreases the amount of stress for you.
+                            </p>
+                            <p>
+                                10. <strong>Discipline.</strong> The feeling of fulfilment, when you know that you were able to control your urges to buy something that you don’t really need is quite an accomplishment. Nowadays, with the influx of products out in the market, it's both a challenge and a daunting task to do. With this, it's really something to be able to manage your finances. Something so simple as managing your grocery list can benefit you in the long run.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer footer-default">
+            <div class="container">
+                <div class="copyright">
+                    &copy; 2018, Designed by
+                    <a href="http://www.invisionapp.com" target="_blank">Invision</a>. Coded by
+                    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+<!--   Core JS Files   -->
+<script src="{% static "main/js/core/jquery.3.2.1.min.js" %}"
+        type="text/javascript"></script>
+<script src="{% static "main/js/core/popper.min.js" %}"
+        type="text/javascript"></script>
+<script src="{% static "main/js/core/bootstrap.min.js" %}"
+        type="text/javascript"></script>
+<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+<script src="{% static "main/js/plugins/bootstrap-switch.js" %}"></script>
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="{% static "main/js/plugins/nouislider.min.js" %}"
+        type="text/javascript"></script>
+<!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
+<script src="{% static "main/js/plugins/bootstrap-datepicker.js" %}"
+        type="text/javascript"></script>
+<!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
+<script src="{% static "main/js/now-ui-kit.js" %}"
+        type="text/javascript"></script>
+
+</html>
