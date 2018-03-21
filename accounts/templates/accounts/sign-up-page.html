@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="gr__demos_creative-tim_com"><head>
+<meta charset="utf-8">
+<link rel="apple-touch-icon" sizes="76x76" href="{% static "main/img/apple-icon.png" %}">
+<link rel="icon" type="image/png" href="{% static "main/img/favicon.png" %}">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<title>Sign Up </title>
+
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport">
+
+<!--     Fonts and icons     -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+<!-- CSS Files -->
+<link href="{% static "accounts/css/bootstrap.min.css" %}" rel="stylesheet">
+<link href="{% static "accounts/css/now-ui-kit.css" %}" rel="stylesheet">
+
+</head>
+
+<body class="signup-page" data-gr-c-s-loaded="true">
+<nav class="navbar navbar-expand-lg bg-white navbar-absolute navbar-transparent">
+	<div class="container">
+
+
+		<div class="navbar-translate">
+			<a class="navbar-brand" href="/" rel="tooltip"
+               data-placement="bottom" >
+				Home
+			</a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+		   		<span class="navbar-toggler-bar bar1"></span>
+				<span class="navbar-toggler-bar bar2"></span>
+				<span class="navbar-toggler-bar bar3"></span>
+		 	</button>
+		</div>
+    </div>
+
+</nav>
+
+<div class="page-header section-image">
+    <div class="page-header-image" style="background-image:url('{% static "accounts/img/bg18.jpg" %}')";></div>
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 ml-auto mr-auto">
+                </div>
+                <div class="col-md-4 mr-auto">
+
+                    <div class="card card-signup">
+                        <div class="card-body">
+                            <h4 class="card-title text-center">Register</h4>
+                            <div class="social text-center">
+                                <button class="btn btn-icon btn-round btn-twitter">
+                                    <i class="fa fa-twitter"></i>
+                                </button>
+                                <button class="btn btn-icon btn-round btn-dribbble">
+                                    <i class="fa fa-dribbble"></i>
+                                </button>
+                                <button class="btn btn-icon btn-round btn-facebook">
+                                    <i class="fa fa-facebook"> </i>
+                                </button>
+                                <h5 class="card-description"> or be classical </h5>
+                            </div>
+
+                            <form class="form" method="" action="">
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
+                                  </div>
+                                  <input type="text"
+                                         class="form-control"
+                                         placeholder="Your Email..."
+                                         autocomplete="email">
+                                </div>
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="now-ui-icons ui-1_lock-circle-open"></i>
+                                    </span>
+                                  </div>
+                                  <input type="text"
+                                         class="form-control"
+                                         placeholder="Password"
+                                         autocomplete="password">
+                                </div>
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="now-ui-icons ui-1_lock-circle-open"></i>
+                                    </span>
+                                  </div>
+                                  <input type="text"
+                                         class="form-control"
+                                         placeholder="Confirm Password"
+                                         autocomplete="cfm-password">
+                                </div>
+
+                                <div class="card-footer text-center">
+                                    <a href="#pablo" class="btn btn-primary btn-round btn-lg">Get Started</a>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a href='{% url "accounts:login" %}'>Already have an account?</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-md-4 ml-auto mr-auto">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+            <div class="container">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="/">
+                                About Us
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/parseendavid/django-shopping-list/blob/master/LICENSE">
+                                GNU General Public License v3.0
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+    </footer>
+
+</div>
+
+
+
+
+
+    <!--   Core JS Files   -->
+<script src="{% static "main/js/core/jquery.3.2.1.min.js" %}" type="text/javascript"></script>
+<script src="{% static "main/js/core/popper.min.js" %}" type="text/javascript"></script>
+<script src="{% static "main/js/core/bootstrap.min.js" %}" type="text/javascript"></script>
+<script src="{% static "accounts/js/plugins/moment.min.js" %}"></script>
+
+<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+<script src="{% static "main/js/plugins/bootstrap-switch.js" %}"></script>
+
+<!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+<script src="{% static "accounts/js/plugins/bootstrap-tagsinput.js" %}"></script>
+
+<!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+<script src="{% static "accounts/js/plugins/bootstrap-selectpicker.js" %}" type="text/javascript"></script>
+
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGat1sgDZ-3y6fFe6HD7QUziVC6jlJNog"></script>
+
+<!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+<script src="{% static "accounts/js/plugins/jasny-bootstrap.min.js" %}"></script>
+
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="{% static "main/js/plugins/nouislider.min.js" %}" type="text/javascript"></script>
+
+<!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
+<script src="{% static "accounts/js/plugins/bootstrap-datetimepicker.min.js" %}" type="text/javascript"></script>
+
+<!-- Plugins for Presentation Page -->
+<!-- Sharrre Library -->
+<script src="
+{% static "main/js/plugins/jquery.sharrre.js" %}" type="text/javascript"></script>
+
+<!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
+<script src="{% static "accounts/js/now-ui-kit.js" %}" type="text/javascript"></script>
+
+
+
+<div style="display: none;"></div>
+        <div id="shadowMeasureIt"></div>
+        <div id="divCoordMeasureIt"></div>
+        <div id="divRectangleMeasureIt">
+            <div id="divRectangleBGMeasureIt"><
+                /div>
+            </div>
+</body>
+</html>
