@@ -42,5 +42,3 @@ class ConfirmResetPassword(PasswordResetConfirmView):
 class CustomPasswordResetCompleteView(PasswordResetCompleteView):
     """Notifies User thank password change has been completed successfully"""
     template_name = 'accounts/reset_complete.html'
-
-
