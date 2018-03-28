@@ -1,0 +1,37 @@
+{% extends "accounts/base.html" %}
+{% load i18n %}
+{% block title %}{{ title }}{% endblock %}
+{% block content_title %}<h1>{{ title }}</h1>{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 ml-auto col-xl-6 mr-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs nav-tabs-neutral justify-content-center"
+                            role="tablist" style="background-color: darkorange">
+                            <li class="nav-item">
+                                <p>Success!!</p>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <!-- Tab panes -->
+                        <div class="tab-content text-center">
+                            <div class="active" role="tabpanel" style="color: black">
+                                <p>{% trans "Your password has been set.  You may go ahead and log in now." %}</p>
+                                <p>
+                                    <a class="btn-lg btn-success"
+                                       href="{% url 'accounts:login' %}">{% trans 'Log in' %}</a>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
