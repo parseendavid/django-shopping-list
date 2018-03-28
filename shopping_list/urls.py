@@ -19,6 +19,6 @@ from .views import landing_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', landing_view),
+    path('', landing_view, name="home_page"),
     path('', include('accounts.urls')),
 ]

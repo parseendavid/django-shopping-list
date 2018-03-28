@@ -65,16 +65,22 @@
                                 </button>
                                 <h5 class="card-description"> or be classical </h5>
                             </div>
+                            {% if form.errors %}
+                                <div class="alert alert-danger" role="alert">
+                                  <strong>Oh snap!</strong>
+                                    {% for error in form.errors %}
+                                        {{ form.errors.as_text | escape }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
 
-                            <form class="form" method="" action="">
+                            <form class="form" method="POST" action="{% url 'accounts:signup' %}">
+                                {% csrf_token %}
                                 <div class="input-group">
                                   <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="now-ui-icons ui-1_email-85"></i></span>
                                   </div>
-                                  <input type="text"
-                                         class="form-control"
-                                         placeholder="Your Email..."
-                                         autocomplete="email">
+                                    {{ form.email }}
                                 </div>
                                 <div class="input-group">
                                   <div class="input-group-prepend">
@@ -82,10 +88,7 @@
                                         <i class="now-ui-icons ui-1_lock-circle-open"></i>
                                     </span>
                                   </div>
-                                  <input type="text"
-                                         class="form-control"
-                                         placeholder="Password"
-                                         autocomplete="password">
+                                    {{ form.password1 }}
                                 </div>
                                 <div class="input-group">
                                   <div class="input-group-prepend">
@@ -93,14 +96,11 @@
                                         <i class="now-ui-icons ui-1_lock-circle-open"></i>
                                     </span>
                                   </div>
-                                  <input type="text"
-                                         class="form-control"
-                                         placeholder="Confirm Password"
-                                         autocomplete="cfm-password">
+                                    {{ form.password2 }}
                                 </div>
-
+                                <input type="hidden" name="next" value="{% url 'accounts:login' %}">
                                 <div class="card-footer text-center">
-                                    <a href="#pablo" class="btn btn-primary btn-round btn-lg">Get Started</a>
+                                    <button type="submit" class="btn btn-primary btn-round btn-lg">Get Started</button>
                                 </div>
                                 <div class="card-footer text-center">
                                     <a href='{% url "accounts:login" %}'>Already have an account?</a>
