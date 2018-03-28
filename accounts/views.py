@@ -1,15 +1,8 @@
-<<<<<<< HEAD
 from django.contrib.auth.views import (LoginView, PasswordResetView, PasswordResetConfirmView,
                                        PasswordResetDoneView, PasswordResetCompleteView)
 from django.views.generic import CreateView
 
 from .forms import CustomAuthenticationForm, CustomUserCreationForm, CustomSetPasswordForm
-=======
-from django.contrib.auth.views import LoginView
-from django.views.generic import FormView, CreateView
-
-from  .forms import CustomAuthenticationForm, CustomUserCreationForm
->>>>>>> Feature added functional Signup and Login Pages.
 from django.urls import reverse_lazy
 
 # Create your views here.
@@ -20,7 +13,6 @@ class LoginView(LoginView):
     form_class = CustomAuthenticationForm
     template_name = "accounts/login-page.html"
 
-<<<<<<< HEAD
 
 class SignUpView(CreateView):
     """Creating a new non-super-user"""
@@ -50,11 +42,3 @@ class ConfirmResetPassword(PasswordResetConfirmView):
 class CustomPasswordResetCompleteView(PasswordResetCompleteView):
     """Notifies User thank password change has been completed successfully"""
     template_name = 'accounts/reset_complete.html'
-=======
-
-class SignUpView(CreateView):
-    """Creating a new non-super-user"""
-    template_name = "accounts/sign-up-page.html"
-    form_class = CustomUserCreationForm
-    success_url = reverse_lazy("accounts:login")
->>>>>>> Feature added functional Signup and Login Pages.
