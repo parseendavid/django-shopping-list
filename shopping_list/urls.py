@@ -18,5 +18,10 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+<<<<<<< HEAD
     path('', include('shopping_list.authentication.urls') )
+=======
+    path('', landing_view, name="home_page"),
+    path('', include('accounts.urls')),
+>>>>>>> Feature added functional Signup and Login Pages.
 ]
