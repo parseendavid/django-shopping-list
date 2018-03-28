@@ -86,7 +86,6 @@
             </div>
         </div>
         <div class="container">
-<<<<<<< HEAD
             <div class="row">
                 <div class="col-md-5 ml-auto mr-auto">
                     <div class="card card-login card-plain">
@@ -123,37 +122,6 @@
                                     </button>
                                 </div>
                             </form>
-=======
-            <div class="col-md-4 content-center">
-                <div class="card card-login card-plain">
-                    <form class="form" method="POST" action="">
-                        {% csrf_token %}
-                        <div class="content">
-                            {% if form.non_field_errors %}
-                                <div class="alert alert-danger" role="alert">
-                                  <strong>Oh snap!</strong>
-                                    {% for error in form.errors %}
-                                        {{ form.non_field_errors.as_text | escape }}
-                                    {% endfor %}
-                                </div>
-                            {% endif %}
-                            <div class="input-group form-group-no-border input-lg">
-                                <span class="input-group-addon">
-                                    <i class="now-ui-icons ui-1_email-85"></i>
-                                </span>
-                                {{ form.username}}
-                            </div>
-                            <div class="input-group form-group-no-border input-lg">
-                                <span class="input-group-addon">
-                                    <i class="now-ui-icons ui-1_lock-circle-open"></i>
-                                </span>
-                                {{ form.password }}
-                            </div>
-                            <input type="hidden" name="next" value="{% url 'admin:index' %}">
-                        </div>
-                        <div class="footer text-center">
-                            <button type="submit" class="btn btn-primary btn-round btn-lg btn-block">Get Started</button>
->>>>>>> Feature added functional Signup and Login Pages.
                         </div>
                         <div class="pull-left">
                             <h6><a href="{% url 'accounts:signup' %}" class="link footer-link">Create

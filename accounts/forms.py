@@ -1,17 +1,12 @@
 """Forms for our shopping list."""
-<<<<<<< HEAD
 from django.contrib.auth.forms import (AuthenticationForm, UserCreationForm, PasswordResetForm,
                                        SetPasswordForm)
-=======
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
->>>>>>> Feature added functional Signup and Login Pages.
 from django.contrib.auth import password_validation
 from django.utils.translation import gettext_lazy as _
 from django import forms
 from .models import User
 
 
-<<<<<<< HEAD
 class CustomPasswordResetForm(PasswordResetForm):
     """Extension to current auth password reset form"""
     email = forms.EmailField(
@@ -28,10 +23,6 @@ class CustomPasswordResetForm(PasswordResetForm):
 class CustomAuthenticationForm(AuthenticationForm):
     """Modified form from auth"""
     reset_password = CustomPasswordResetForm
-=======
-class CustomAuthenticationForm(AuthenticationForm):
-    """Modified form from auth"""
->>>>>>> Feature added functional Signup and Login Pages.
     username = forms.EmailField(
         max_length=50,
         widget=forms.EmailInput(attrs={
@@ -49,10 +40,7 @@ class CustomAuthenticationForm(AuthenticationForm):
             attrs={
                 "class": "form-control",
                 "placeholder": "Password",
-<<<<<<< HEAD
-=======
                 "autocomplete": "password",
->>>>>>> Feature added functional Signup and Login Pages.
             }
         )
     )
@@ -66,11 +54,8 @@ class CustomUserCreationForm(UserCreationForm):
         widget=forms.EmailInput(attrs={
             "class": "form-control",
             "placeholder": "Your Email...",
-<<<<<<< HEAD
-=======
             "autocomplete": "email",
             "autofocus": True,
->>>>>>> Feature added functional Signup and Login Pages.
         })
 
     )
@@ -102,7 +87,6 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ("email",)
-<<<<<<< HEAD
 
 
 class CustomSetPasswordForm(SetPasswordForm):
@@ -130,5 +114,3 @@ class CustomSetPasswordForm(SetPasswordForm):
             }
         )
     )
-=======
->>>>>>> Feature added functional Signup and Login Pages.
