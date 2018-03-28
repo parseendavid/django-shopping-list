@@ -1,0 +1,99 @@
+{% extends "accounts/base.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/forms.css" %}"/>{% endblock %}
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+        &rsaquo; {% trans 'Password reset confirmation' %}
+    </div>
+{% endblock %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block content_title %}<h1>{{ title }}</h1>{% endblock %}
+{% block content %}
+
+    {% if validlink %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 ml-auto mr-auto">
+                </div>
+                <div class="col-md-4 mr-auto">
+                    <div class="alert alert-success" role="alert">
+                        <p>{% trans "Please enter your new password twice so we can verify you typed it in correctly." %}</p>
+                    </div>
+                    <div class="card card-signup">
+                        <div class="card-body">
+                            <h4 class="card-title text-center">Reset Password</h4>
+                            {% if form.errors %}
+                                <div class="alert alert-danger" role="alert">
+                                    <strong>Oh snap!</strong>
+                                    {% for error in form.errors %}
+                                        {{ form.errors.as_text | escape }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+
+                            <form class="form" method="POST">
+                                {% csrf_token %}
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="now-ui-icons ui-1_lock-circle-open"></i>
+                                    </span>
+                                    </div>
+                                    {{ form.new_password1 }}
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="now-ui-icons ui-1_lock-circle-open"></i>
+                                    </span>
+                                    </div>
+                                    {{ form.new_password2 }}
+                                </div>
+                                <input type="hidden" name="next" value="{% url 'accounts:login' %}">
+                                <div class="card-footer text-center">
+                                    <button type="submit" class="btn btn-primary btn-round btn-lg">
+                                        Reset Password
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 ml-auto mr-auto">
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 ml-auto col-xl-6 mr-auto">
+                    <div class="card">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs nav-tabs-neutral justify-content-center"
+                                role="tablist" style="background-color: orangered">
+                                <li class="nav-item">
+                                    <p>Invalid Link!!!</p>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <!-- Tab panes -->
+                            <div class="tab-content text-center">
+                                <div class="active" id="home1" role="tabpanel" style="color: black">
+                                    <p>{% trans "The password reset link was invalid, possibly because it has already been used.  Please request a new password reset." %}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

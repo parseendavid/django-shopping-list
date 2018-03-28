@@ -1,0 +1,35 @@
+{% extends "accounts/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}{{ title }}{% endblock %}
+{% block content_title %}<h1>{{ title }}</h1>{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 ml-auto col-xl-6 mr-auto">
+                <div class="card">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs nav-tabs-neutral justify-content-center"
+                            role="tablist" data-background-color="orange">
+                            <li class="nav-item">
+                                <p>We Have Sent You An Email</p>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <!-- Tab panes -->
+                        <div class="tab-content text-center">
+                            <div class="active" id="home1" role="tabpanel" style="color: black">
+                                <p>{% trans "We've emailed you instructions for setting your password, if an account exists with the email you entered. You should receive them shortly." %}</p>
+
+                                <p>{% trans "If you don't receive an email, please make sure you've entered the address you registered with, and check your spam folder." %}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Tabs on plain Card -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
