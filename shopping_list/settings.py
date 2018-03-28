@@ -126,4 +126,8 @@ STATICFILES_DIRS = [
 AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
 )
+<<<<<<< HEAD
 AUTH_USER_MODEL = "accounts.User"
+=======
+AUTH_USER_MODEL = "accounts.User"
+>>>>>>> Feature added functional Signup and Login Pages.
