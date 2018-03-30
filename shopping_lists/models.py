@@ -11,8 +11,8 @@ class ShoppingList(models.Model):
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='shopping_lists')
     date_created = models.DateTimeField(auto_now_add=True)
-    update_date = models.DateTimeField(auto_now=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ('name',)
+        ordering = ('-date_created',)
 
