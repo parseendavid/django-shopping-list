@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Added APPS
     'accounts',
+    'shopping_lists',
 ]
 
 MIDDLEWARE = [
@@ -121,6 +123,7 @@ STATIC_ROOT = "collected-static-files"
 STATICFILES_DIRS = [
     ("main", "static"),
     ("accounts", "accounts/static"),
+    ("shopping_lists", "shopping_lists/static")
 ]
 
 AUTHENTICATION_BACKENDS = (
@@ -133,3 +136,6 @@ EMAIL_PORT = os.getenv("EMAIL_PORT")
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS")
+
+LOGIN_URL = "accounts:login"
+LOGIN_REDIRECT_URL = "shopping_lists:dashboard"
