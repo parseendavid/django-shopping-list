@@ -3,13 +3,23 @@
     Dashboard
 {% endblock %}
 {% block content %}
-    <div class="row" style="margin-top:-20px">
-        <div class="col-md-8 ml-auto mr-auto">
-            <div class="card card-plain" style="color:black">
-                <div class="card-body bg-white">
-                    <form class="form" method="POST">
-                        {% csrf_token %}
-                        <span>
+    <div class="modal modal-dialog modal-login modal-clear" id="AddList" tabindex="-1"
+         role="dialog"
+         style="color: black">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Shopping List</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body">
+                        <form class="form" method="POST"
+                              action="{% url 'shopping_lists:dashboard' %}">
+                            {% csrf_token %}
+                            <span>
                         <div class="input-group form-group-no-border input-lg">
                             {{ form.name }}
                         </div>
@@ -18,69 +28,137 @@
                                 ADD
                             </button>
                     </span>
-                    </form>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:-20px">
+        <div class="col-md-8 ml-auto mr-auto">
+            <div class="card card-plain" style="color:black">
+                <div class="card-body bg-white">
+                    {% if form.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            <div class="container">
+                                <div class="alert-icon">
+                                    <i class="now-ui-icons objects_support-17"></i>
+                                </div>
+                                <strong>Oh snap!</strong>
+                                {% for error in form.errors %}
+                                    {{ form.errors.as_text | escape }}
+                                {% endfor %}
+                                <button type="button" class="close" data-dismiss="alert"
+                                        aria-label="Close">
+						<span aria-hidden="true">
+							<i class="now-ui-icons ui-1_simple-remove"></i>
+						</span>
+                                </button>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if messages %}
+                        <div class="alert alert-success" role="alert">
+                            <div class="container">
+                                <div class="alert-icon">
+                                    <i class="now-ui-icons ui-2_like"></i>
+                                </div>
+                                <strong>Well done!</strong>
+                                {% for message in messages %}
+                                    {{ message }}
+                                {% endfor %}
+                                <button type="button" class="close" data-dismiss="alert"
+                                        aria-label="Close">
+  						<span aria-hidden="true">
+							<i class="now-ui-icons ui-1_simple-remove"></i>
+						</span>
+                                </button>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="pull-left">
+                        <h4><a href="#" data-toggle="modal"
+                               data-target="#AddList" class="link footer-link"><i
+                                class=""></i>Add New...</a>
+                        </h4>
+                    </div>
                     <div class="table-responsive ">
                         <table class="table">
-                            <thead class="">
-                            <tr>
-                                <th class="text-center">
-                                    #
-                                </th>
-                                <th>
-                                    Name
-                                </th>
-                                <th>
-                                    Job Position
-                                </th>
-                                <th class="text-center">
-                                    Since
-                                </th>
-                                <th class="text-right">
-                                    Salary
-                                </th>
-                                <th class="text-right">
-                                    Actions
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for items in "xxxxxxxxxx" %}
+                            {% if shopping_lists %}
+                                <thead class="">
                                 <tr>
-                                    <td class="text-center">
-                                        1
-                                    </td>
-                                    <td>
-                                        Andrew Mike
-                                    </td>
-                                    <td>
-                                        Develop
-                                    </td>
-                                    <td class="text-center">
-                                        2013
-                                    </td>
-                                    <td class="text-right">
-                                        € 99,225
-                                    </td>
-                                    <td class="text-right">
-                                        <button type="button" rel="tooltip"
-                                                class="btn btn-info btn-icon btn-sm "
-                                                data-original-title="" title="">
-                                            <i class="now-ui-icons users_single-02"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip"
-                                                class="btn btn-success btn-icon btn-sm "
-                                                data-original-title="" title="">
-                                            <i class="now-ui-icons ui-2_settings-90"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip"
-                                                class="btn btn-danger btn-icon btn-sm "
-                                                data-original-title="" title="">
-                                            <i class="now-ui-icons ui-1_simple-remove"></i>
-                                        </button>
-                                    </td>
+                                    <th class="text-center">
+                                        #
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                    <th class="text-center">
+                                        Since
+                                    </th>
+                                    <th class="text-right">
+                                        Last Updated
+                                    </th>
+                                    <th class="text-right">
+                                        Actions
+                                    </th>
                                 </tr>
-                            {% endfor %}
-                            </tbody>
+                                </thead>
+                                <tbody>
+                                {% for list in shopping_lists %}
+                                    <tr>
+                                        <td class="text-center">
+                                            {{ forloop.counter }}
+                                        </td>
+                                        <td>
+                                            {{ list.name }}
+                                        </td>
+                                        <td>
+                                            <a style="color: blue" href="#">Details</a>
+                                        </td>
+                                        <td class="text-center">
+                                            {{ list.date_created }}
+                                        </td>
+                                        <td class="text-right">
+                                            {{ list.date_updated | default:"None" }}
+                                        </td>
+                                        <td class="text-right">
+                                            <button type="button" rel="tooltip"
+                                                    class="btn btn-info btn-icon btn-sm "
+                                                    data-original-title="" title="">
+                                                <i class="now-ui-icons users_single-02"></i>
+                                            </button>
+                                            <button type="button" rel="tooltip"
+                                                    class="btn btn-success btn-icon btn-sm "
+                                                    data-original-title="" title="">
+                                                <i class="now-ui-icons ui-2_settings-90"></i>
+                                            </button>
+                                            <button type="button" rel="tooltip"
+                                                    class="btn btn-danger btn-icon btn-sm "
+                                                    data-original-title="" title="">
+                                                <i class="now-ui-icons ui-1_simple-remove"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            {% else %}
+                                <br>
+                                <br>
+                                <thead>
+                                <tr>
+                                    ********** NO SHOPPING LISTS FOUND PLEASE CREATE ONE **********
+                                </tr>
+                                </thead>
+                            {% endif %}
                         </table>
                     </div>
                 </div>
