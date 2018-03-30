@@ -12,7 +12,7 @@ class LoginView(LoginView):
     """Form view for Login"""
     form_class = CustomAuthenticationForm
     template_name = "accounts/login-page.html"
-
+    redirect_authenticated_user = True
 
 class SignUpView(CreateView):
     """Creating a new non-super-user"""
@@ -47,4 +47,4 @@ class CustomPasswordResetCompleteView(PasswordResetCompleteView):
 class CustomLogoutView(LogoutView):
     """Cutomised logout view"""
     next_page = reverse_lazy("home_page")
-    # template_name =
+
