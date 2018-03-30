@@ -1,15 +1,27 @@
-{% extends 'shopping_lists/base.html'%}
+{% extends 'shopping_lists/base.html' %}
 {% block title %}
-Dashboard
+    Dashboard
 {% endblock %}
 {% block content %}
-<div class="row" style="margin-top:-20px">
-    <div class="col-md-8 ml-auto mr-auto">
-        <div class="card card-plain" style="color:black">
-            <div class="card-body bg-white">
-                <div class="table-responsive ">
-                    <table class="table">
-                        <thead class="">
+    <div class="row" style="margin-top:-20px">
+        <div class="col-md-8 ml-auto mr-auto">
+            <div class="card card-plain" style="color:black">
+                <div class="card-body bg-white">
+                    <form class="form" method="POST">
+                        {% csrf_token %}
+                        <span>
+                        <div class="input-group form-group-no-border input-lg">
+                            {{ form.name }}
+                        </div>
+                            <button type="submit"
+                                    class="btn btn-primary btn-round btn-lg btn-block">
+                                ADD
+                            </button>
+                    </span>
+                    </form>
+                    <div class="table-responsive ">
+                        <table class="table">
+                            <thead class="">
                             <tr>
                                 <th class="text-center">
                                     #
@@ -30,45 +42,51 @@ Dashboard
                                     Actions
                                 </th>
                             </tr>
-                        </thead>
-                        <tbody>
+                            </thead>
+                            <tbody>
                             {% for items in "xxxxxxxxxx" %}
-                            <tr>
-                                <td class="text-center">
-                                    1
-                                </td>
-                                <td>
-                                    Andrew Mike
-                                </td>
-                                <td>
-                                    Develop
-                                </td>
-                                <td class="text-center">
-                                    2013
-                                </td>
-                                <td class="text-right">
-                                    € 99,225
-                                </td>
-                                <td class="text-right">
-                                    <button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm " data-original-title="" title="">
-        <i class="now-ui-icons users_single-02"></i>
-</button>
-                                    <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm " data-original-title="" title="">
-        <i class="now-ui-icons ui-2_settings-90"></i>
-</button>
-                                    <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm " data-original-title="" title="">
-        <i class="now-ui-icons ui-1_simple-remove"></i>
-</button>
-                                </td>
-                            </tr>
-                            {%endfor%}
-                        </tbody>
-                    </table>
+                                <tr>
+                                    <td class="text-center">
+                                        1
+                                    </td>
+                                    <td>
+                                        Andrew Mike
+                                    </td>
+                                    <td>
+                                        Develop
+                                    </td>
+                                    <td class="text-center">
+                                        2013
+                                    </td>
+                                    <td class="text-right">
+                                        € 99,225
+                                    </td>
+                                    <td class="text-right">
+                                        <button type="button" rel="tooltip"
+                                                class="btn btn-info btn-icon btn-sm "
+                                                data-original-title="" title="">
+                                            <i class="now-ui-icons users_single-02"></i>
+                                        </button>
+                                        <button type="button" rel="tooltip"
+                                                class="btn btn-success btn-icon btn-sm "
+                                                data-original-title="" title="">
+                                            <i class="now-ui-icons ui-2_settings-90"></i>
+                                        </button>
+                                        <button type="button" rel="tooltip"
+                                                class="btn btn-danger btn-icon btn-sm "
+                                                data-original-title="" title="">
+                                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
+
+
         </div>
-
-
     </div>
-</div>
 {% endblock %}
