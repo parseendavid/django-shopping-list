@@ -38,6 +38,9 @@
             </div>
         </div>
     </div>
+    <div class="modal modal-dialog modal-login modal-clear alien-modal-form" id="EditList"
+         tabindex="-1" role="dialog" style="color: black">
+    </div>
 
     <div class="row" style="margin-top:-20px">
         <div class="col-md-8 ml-auto mr-auto">
@@ -84,7 +87,7 @@
                     <div class="pull-left">
                         <h4><a href="#" data-toggle="modal"
                                data-target="#AddList" class="link footer-link"><i
-                                class=""></i>Add New...</a>
+                                class=""></i>Add New List...</a>
                         </h4>
                     </div>
                     <div class="table-responsive ">
@@ -132,8 +135,11 @@
                                         </td>
                                         <td class="text-right">
                                             <button type="button" rel="tooltip"
-                                                    class="btn btn-info btn-icon btn-sm "
-                                                    data-original-title="" title="">
+                                                    class="alien-modal-trigger btn btn-info
+                                                           btn-icon btn-sm "
+                                                    title="Update List Name"
+                                                    data-form="{% url 'shopping_lists:update' list.id %}"
+                                            >
                                                 <i class="now-ui-icons users_single-02"></i>
                                             </button>
                                             <button type="button" rel="tooltip"
