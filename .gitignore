@@ -11,7 +11,6 @@ __pycache__/
 .cache
 nosetests.xml
 coverage.xml
-*/migrations/*
 .env
 .out
 *.idea/*

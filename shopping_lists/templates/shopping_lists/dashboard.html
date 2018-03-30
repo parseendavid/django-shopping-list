@@ -21,6 +21,7 @@
                     </form>
                     <div class="table-responsive ">
                         <table class="table">
+                        {% if shopping_lists %}
                             <thead class="">
                             <tr>
                                 <th class="text-center">
@@ -30,13 +31,13 @@
                                     Name
                                 </th>
                                 <th>
-                                    Job Position
+
                                 </th>
                                 <th class="text-center">
                                     Since
                                 </th>
                                 <th class="text-right">
-                                    Salary
+                                    Last Updated
                                 </th>
                                 <th class="text-right">
                                     Actions
@@ -44,22 +45,22 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {% for items in "xxxxxxxxxx" %}
+                            {% for list in shopping_lists %}
                                 <tr>
                                     <td class="text-center">
-                                        1
+                                        {{forloop.counter}}
                                     </td>
                                     <td>
-                                        Andrew Mike
+                                        {{ list.name }}
                                     </td>
                                     <td>
-                                        Develop
+                                        <a style="color: blue" href="#">Details</a>
                                     </td>
                                     <td class="text-center">
-                                        2013
+                                        {{ list.date_created }}
                                     </td>
                                     <td class="text-right">
-                                        € 99,225
+                                        {{ list.date_updated | default:"None" }}
                                     </td>
                                     <td class="text-right">
                                         <button type="button" rel="tooltip"
@@ -81,6 +82,15 @@
                                 </tr>
                             {% endfor %}
                             </tbody>
+                        {% else %}
+                            <br>
+                            <br>
+                            <thead>
+                            <tr>
+                                ********** NO SHOPPING LISTS FOUND PLEASE CREATE ONE **********
+                            </tr>
+                            </thead>
+                        {% endif %}
                         </table>
                     </div>
                 </div>

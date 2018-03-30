@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView
 
+from shopping_lists.models import ShoppingList
 from .forms import ShoppingListForm
 
 # Create your views here.
@@ -14,7 +15,9 @@ class DashBoardView(CreateView):
     template_name = 'shopping_lists/dashboard.html'
     form_class = ShoppingListForm
     success_url = reverse_lazy("shopping_lists:dashboard")
-
+    def render_to_response(self, context, **response_kwargs):
+        context['shopping_lists'] = ShoppingList.objects.filter(owner=self.request.user)
+        return super(DashBoardView, self).render_to_response(context, **response_kwargs)
     def form_valid(self, form):
         form.instance.owner = self.request.user
         return super(DashBoardView, self).form_valid(form)
