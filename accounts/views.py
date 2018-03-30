@@ -1,5 +1,5 @@
 from django.contrib.auth.views import (LoginView, PasswordResetView, PasswordResetConfirmView,
-                                       PasswordResetDoneView, PasswordResetCompleteView)
+                                       PasswordResetDoneView, PasswordResetCompleteView, LogoutView)
 from django.views.generic import CreateView
 
 from .forms import CustomAuthenticationForm, CustomUserCreationForm, CustomSetPasswordForm
@@ -42,3 +42,9 @@ class ConfirmResetPassword(PasswordResetConfirmView):
 class CustomPasswordResetCompleteView(PasswordResetCompleteView):
     """Notifies User thank password change has been completed successfully"""
     template_name = 'accounts/reset_complete.html'
+
+
+class CustomLogoutView(LogoutView):
+    """Cutomised logout view"""
+    next_page = reverse_lazy("home_page")
+    # template_name =
