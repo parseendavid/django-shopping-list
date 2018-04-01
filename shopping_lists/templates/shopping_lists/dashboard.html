@@ -41,6 +41,9 @@
     <div class="modal modal-dialog modal-login modal-clear alien-modal-form" id="EditList"
          tabindex="-1" role="dialog" style="color: black">
     </div>
+    <div class="modal modal-dialog modal-login modal-clear alien-modal-form" id="DeleteList"
+         tabindex="-1" role="dialog" style="color: black">
+    </div>
 
     <div class="row" style="margin-top:-20px">
         <div class="col-md-8 ml-auto mr-auto">
@@ -137,19 +140,20 @@
                                             <button type="button" rel="tooltip"
                                                     class="alien-modal-trigger btn btn-info
                                                            btn-icon btn-sm "
-                                                    title="Update List Name"
-                                                    data-form="{% url 'shopping_lists:update' list.id %}"
+                                                    title="Update List Name."
+                                                    data-action="{% url 'shopping_lists:update' list.id %}"
+                                                    data-modal_id="#EditList"
+                                                    data-form_id="#edit-form"
                                             >
                                                 <i class="now-ui-icons users_single-02"></i>
                                             </button>
                                             <button type="button" rel="tooltip"
-                                                    class="btn btn-success btn-icon btn-sm "
-                                                    data-original-title="" title="">
-                                                <i class="now-ui-icons ui-2_settings-90"></i>
-                                            </button>
-                                            <button type="button" rel="tooltip"
-                                                    class="btn btn-danger btn-icon btn-sm "
-                                                    data-original-title="" title="">
+                                                    class="alien-modal-trigger btn btn-danger btn-icon btn-sm "
+                                                    title="Delete List."
+                                                    data-action="{% url 'shopping_lists:delete' list.id %}"
+                                                    data-modal_id="#DeleteList"
+                                                    data-form_id="#delete-form"
+                                                    data-list_name={{ list.name }}>
                                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                                             </button>
                                         </td>
