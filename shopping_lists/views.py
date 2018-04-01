@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, render_to_response
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, UpdateView
-from django.views.generic.edit import FormMixin
+from django.views.generic.edit import FormMixin, DeletionMixin, DeleteView
 
 from shopping_lists.models import ShoppingList
 from .forms import ShoppingListForm
@@ -48,6 +48,13 @@ class ShoppingListUpdate(SuccessMessageMixin, UpdateView):
         if ShoppingList.objects.filter(name=list_name, owner=owner).exists():
             form._errors[' A Shopping List with that name already exists'] = ''
             context = {"form":form}
-            context['shopping_lists'] = ShoppingList.objects.filter(owner=owner)
+            context['shopping_lists'] = ShoppingList.objects.ifilter(owner=owner)
             return render_to_response("shopping_lists/dashboard.html",context=context)
         return super(ShoppingListUpdate, self).form_valid(form)
+
+class ShoppingListDelete(SuccessMessageMixin, DeleteView):
+    """Deletion of a shopping list."""
+    model = ShoppingList
+    template_name = "shopping_lists/delete_list_form.html"
+    success_url = reverse_lazy("shopping_lists:dashboard")
+    success_message = "Delete was successful."
