@@ -1,7 +1,8 @@
 <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit Shopping </h5>
+            <h5 class="modal-title" id="exampleModalLabel">Edit Shopping List Item:
+                <em style="color: orangered">{{ object.name }}</em></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -17,6 +18,18 @@
                         </label>
                         <div class="input-group form-group-no-border input-lg">
                             {{ form.name }}
+                        </div>
+                        <label class="form-check-label">
+                            {{ form.price.label }}
+                        </label>
+                        <div class="input-group form-group-no-border input-lg">
+                            {{ form.price }}
+                        </div>
+                        <label class="form-check-label">
+                            {{ form.quantity.label }}
+                        </label>
+                        <div class="input-group form-group-no-border input-lg">
+                            {{ form.quantity }}
                         </div>
                             <button type="submit"
                                     class="btn btn-primary btn-round btn-lg btn-block">
