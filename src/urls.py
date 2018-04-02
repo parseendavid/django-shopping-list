@@ -22,5 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', landing_view, name="home_page"),
     path('', include('accounts.urls')),
-    path('dashboard/', include('shopping_lists.urls'))
+    path('', include('shopping_lists.urls'))
 ]

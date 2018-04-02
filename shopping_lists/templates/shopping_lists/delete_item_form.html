@@ -1,0 +1,28 @@
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+        </div>
+        <div class="modal-body">
+            <div class="card-body">
+                <form class="form" id="delete-item-form" method="POST"
+                >
+                    {% csrf_token %}
+                    <div class="input-group form-group-no-border input-lg center">
+                        <p>Are Sure you want to delete "</p> {{ object.name }} <p>" shopping list? </p>
+                    </div>
+                    <span>
+                        <button type="submit"
+                                class="btn btn-primary btn-round">
+                            Yes, I'm sure
+                        </button>
+                        <button type="button" class="btn btn-secondary btn-round"
+                                data-dismiss="modal">No, take me back
+                        </button>
+                    </span>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

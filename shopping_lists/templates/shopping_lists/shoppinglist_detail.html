@@ -1,6 +1,6 @@
 {% extends 'shopping_lists/base.html' %}
 {% block title %}
-    Dashboard
+    Details for {{ object.name }}
 {% endblock %}
 {% block content %}
     <div class="modal modal-dialog modal-login modal-clear" id="AddList" tabindex="-1"
@@ -9,7 +9,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Shopping List</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Item</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -17,17 +17,21 @@
                 <div class="modal-body">
                     <div class="card-body">
                         <form class="form" method="POST"
-                              action="{% url 'shopping_lists:dashboard' %}">
+                              action="">
                             {% csrf_token %}
-                            <span>
-                        <div class="input-group form-group-no-border input-lg">
-                            {{ form.name }}
-                        </div>
+                            <div class="input-group form-group-no-border input-lg">
+                                {{ form.name }}
+                            </div>
+                            <div class="input-group form-group-no-border input-lg">
+                                {{ form.price }}
+                            </div>
+                            <div class="input-group form-group-no-border input-lg">
+                                {{ form.quantity }}
+                            </div>
                             <button type="submit"
                                     class="btn btn-primary btn-round btn-lg btn-block">
                                 ADD
                             </button>
-                    </span>
                         </form>
                     </div>
                 </div>
@@ -38,15 +42,17 @@
             </div>
         </div>
     </div>
-    <div class="modal modal-dialog modal-login modal-clear alien-modal-form" id="EditList"
+    <div class="modal modal-dialog modal-login modal-clear alien-modal-form" id="EditItem"
          tabindex="-1" role="dialog" style="color: black">
     </div>
-    <div class="modal modal-dialog modal-login modal-clear alien-modal-form" id="DeleteList"
+    <div class="modal modal-dialog modal-login modal-clear alien-modal-form" id="DeleteItem"
          tabindex="-1" role="dialog" style="color: black">
     </div>
 
     <div class="row" style="margin-top:-20px">
         <div class="col-md-8 ml-auto mr-auto">
+            <a href="{% url 'shopping_lists:dashboard' %}"
+               class="btn btn-neutral pull-left">❮ Back to Dashboard</a>
             <div class="card card-plain" style="color:black">
                 <div class="card-body bg-white">
                     {% if form.errors %}
@@ -88,14 +94,22 @@
                         </div>
                     {% endif %}
                     <div class="pull-left">
-                        <h4><a href="#" data-toggle="modal"
-                               data-target="#AddList" class="link footer-link"><i
-                                class=""></i>Add New List...</a>
-                        </h4>
+                        <a href="" data-toggle="modal"
+                           data-target="#AddList"
+                           class="pull-left btn btn-sm btn-primary btn-floating"><i
+                                class="material-icons">add</i></a>
                     </div>
                     <div class="table-responsive ">
                         <table class="table">
-                            {% if shopping_lists %}
+                            <tr>
+                                <h6>
+                                    Items for <strong><em
+                                        style="color: orange">{{ object.name }}</em></strong>
+                                    shopping
+                                    list.
+                                </h6>
+                            </tr>
+                            {% if shopping_items %}
                                 <thead class="">
                                 <tr>
                                     <th class="text-center">
@@ -105,7 +119,10 @@
                                         Name
                                     </th>
                                     <th>
-
+                                        Price
+                                    </th>
+                                    <th>
+                                        Quantity
                                     </th>
                                     <th class="text-center">
                                         Since
@@ -119,32 +136,33 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {% for list in shopping_lists %}
+                                {% for item in shopping_items %}
                                     <tr>
                                         <td class="text-center">
                                             {{ forloop.counter }}
                                         </td>
                                         <td>
-                                            {{ list.name }}
+                                            {{ item.name }}
                                         </td>
                                         <td>
-                                            <a style="color: blue"
-                                               href="{% url 'shopping_lists:details' list.id %}">Details
-                                            </a>
+                                            {{ item.price }}
+                                        </td>
+                                        <td>
+                                            {{ item.quantity }}
                                         </td>
                                         <td class="text-center">
-                                            {{ list.date_created }}
+                                            {{ item.date_created }}
                                         </td>
                                         <td class="text-right">
-                                            {{ list.date_updated | default:"None" }}
+                                            {{ item.date_updated }}
                                         </td>
                                         <td class="text-right">
                                             <button type="button" rel="tooltip"
                                                     class="alien-modal-trigger btn btn-info
                                                            btn-icon btn-sm "
-                                                    title="Update List Name."
-                                                    data-action="{% url 'shopping_lists:update_list' list.id %}"
-                                                    data-modal_id="#EditList"
+                                                    title="Update Item Name."
+                                                    data-action="{% url 'shopping_lists:update_item' item.id %}"
+                                                    data-modal_id="#EditItem"
                                                     data-form_id="#edit-form"
                                             >
                                                 <i class="now-ui-icons users_single-02"></i>
@@ -152,10 +170,10 @@
                                             <button type="button" rel="tooltip"
                                                     class="alien-modal-trigger btn btn-danger btn-icon btn-sm "
                                                     title="Delete List."
-                                                    data-action="{% url 'shopping_lists:delete_list' list.id %}"
-                                                    data-modal_id="#DeleteList"
-                                                    data-form_id="#delete-form"
-                                                    data-list_name={{ list.name }}>
+                                                    data-action="{% url 'shopping_lists:delete_item' item.id %}"
+                                                    data-modal_id="#DeleteItem"
+                                                    data-form_id="#delete-item-form"
+                                                    data-list_name={{ item.name }}>
                                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                                             </button>
                                         </td>
@@ -167,7 +185,7 @@
                                 <br>
                                 <thead>
                                 <tr>
-                                    ********** NO SHOPPING LISTS FOUND PLEASE CREATE ONE **********
+                                    ********** NO ITEMS FOUND PLEASE CREATE ONE **********
                                 </tr>
                                 </thead>
                             {% endif %}
