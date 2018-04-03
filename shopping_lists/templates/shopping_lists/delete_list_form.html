@@ -1,4 +1,4 @@
-<div class="modal-dialog" role="document">
+<div class="modal-dialog" role="">
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel"></h5>
@@ -9,7 +9,8 @@
                 >
                     {% csrf_token %}
                     <div class="input-group form-group-no-border input-lg center">
-                        <p>Are Sure you want to delete "</p> {{ object.name }} <p>" shopping list? </p>
+                        <p>Are Sure you want to delete "</p> {{ object.name }} <p>" shopping
+                        list? </p>
                     </div>
                     <span>
                         <button type="submit"

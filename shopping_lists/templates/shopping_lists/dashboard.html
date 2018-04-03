@@ -38,17 +38,14 @@
             </div>
         </div>
     </div>
-    <div class="modal modal-dialog modal-login modal-clear alien-modal-form" id="EditList"
-         tabindex="-1" role="dialog" style="color: black">
-    </div>
-    <div class="modal modal-dialog modal-login modal-clear alien-modal-form" id="DeleteList"
+    <div class="modal modal-dialog modal-login modal-clear alien-modal-form" id="FormModal"
          tabindex="-1" role="dialog" style="color: black">
     </div>
 
     <div class="row" style="margin-top:-20px">
         <div class="col-md-8 ml-auto mr-auto">
             <div class="card card-plain" style="color:black">
-                <div class="card-body bg-white">
+                <div class="card-body bg-white" style="opacity:.85">
                     {% if form.errors %}
                         <div class="alert alert-danger" role="alert">
                             <div class="container">
@@ -88,10 +85,12 @@
                         </div>
                     {% endif %}
                     <div class="pull-left">
-                        <h4><a href="#" data-toggle="modal"
-                               data-target="#AddList" class="link footer-link"><i
-                                class=""></i>Add New List...</a>
-                        </h4>
+                        <a href="#"
+                           data-toggle="modal"
+                           data-target="#AddList"
+                           class="padding-five btn btn-primary btn-round float-right">
+                            <i class="material-icons padding-five">add</i>
+                        </a>
                     </div>
                     <div class="table-responsive ">
                         <table class="table">
@@ -139,23 +138,24 @@
                                             {{ list.date_updated | default:"None" }}
                                         </td>
                                         <td class="text-right">
-                                            <button type="button" rel="tooltip"
+                                            <button type="button"
+                                                    rel="tooltip"
                                                     class="alien-modal-trigger btn btn-info
                                                            btn-icon btn-sm "
                                                     title="Update List Name."
                                                     data-action="{% url 'shopping_lists:update_list' list.id %}"
-                                                    data-modal_id="#EditList"
+                                                    data-modal_id="#FormModal"
                                                     data-form_id="#edit-form"
                                             >
                                                 <i class="now-ui-icons users_single-02"></i>
                                             </button>
-                                            <button type="button" rel="tooltip"
+                                            <button type="button"
+                                                    rel="tooltip"
                                                     class="alien-modal-trigger btn btn-danger btn-icon btn-sm "
                                                     title="Delete List."
                                                     data-action="{% url 'shopping_lists:delete_list' list.id %}"
-                                                    data-modal_id="#DeleteList"
-                                                    data-form_id="#delete-form"
-                                                    data-list_name={{ list.name }}>
+                                                    data-modal_id="#FormModal"
+                                                    data-form_id="#delete-form">
                                                 <i class="now-ui-icons ui-1_simple-remove"></i>
                                             </button>
                                         </td>

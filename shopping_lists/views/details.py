@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseForbidden
 from django.shortcuts import render_to_response
@@ -13,8 +14,7 @@ from shopping_lists.forms import ShoppingItemForm
 # Create your views here.
 
 
-@method_decorator(login_required, name='dispatch')
-class DetailsView(SuccessMessageMixin, CreateView):
+class DetailsView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = ShoppingItemForm
     template_name = "shopping_lists/shoppinglist_detail.html"
     success_message = "Shopping Item has been created."
@@ -37,8 +37,7 @@ class DetailsView(SuccessMessageMixin, CreateView):
         return super(DetailsView, self).render_to_response(context, **response_kwargs)
 
 
-@method_decorator(login_required, name='dispatch')
-class ShoppingItemUpdate(SuccessMessageMixin, UpdateView):
+class ShoppingItemUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = ShoppingItem
     form_class = ShoppingItemForm
     template_name = "shopping_lists/edit_item_form.html"
@@ -52,7 +51,7 @@ class ShoppingItemUpdate(SuccessMessageMixin, UpdateView):
         item_name = form.cleaned_data['name']
         list = ShoppingItem.objects.filter(id=self.kwargs.get('pk')).first().list
         item = ShoppingItem.objects.filter(name=item_name, list=list)
-        if item.exists() and item.first().id != self.kwargs.get('pk'):
+        if item.exists() and item.first().id != int(self.kwargs.get('pk')):
             form._errors[' A Shopping List Item with that name already exists in this List'] = ''
             context = {"form": form}
             context['shopping_items'] = ShoppingItem.objects.filter(list=list)
@@ -60,8 +59,7 @@ class ShoppingItemUpdate(SuccessMessageMixin, UpdateView):
         return super(ShoppingItemUpdate, self).form_valid(form)
 
 
-@method_decorator(login_required, name='dispatch')
-class ShoppingItemDelete(SuccessMessageMixin, DeleteView):
+class ShoppingItemDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     """Deletion of a shopping list."""
     model = ShoppingItem
     template_name = "shopping_lists/delete_item_form.html"

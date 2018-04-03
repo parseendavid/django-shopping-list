@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render_to_response
 from django.urls import reverse_lazy
@@ -12,8 +13,7 @@ from shopping_lists.forms import ShoppingListForm
 # Create your views here.
 
 
-@method_decorator(login_required, name='dispatch')
-class DashBoardView(SuccessMessageMixin, CreateView):
+class DashBoardView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = 'shopping_lists/dashboard.html'
     form_class = ShoppingListForm
     success_url = reverse_lazy("shopping_lists:dashboard")
@@ -33,8 +33,7 @@ class DashBoardView(SuccessMessageMixin, CreateView):
         return super(DashBoardView, self).form_valid(form)
 
 
-@method_decorator(login_required, name='dispatch')
-class ShoppingListUpdate(SuccessMessageMixin, UpdateView):
+class ShoppingListUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = ShoppingList
     form_class = ShoppingListForm
     template_name = "shopping_lists/edit_list_form.html"
@@ -44,7 +43,8 @@ class ShoppingListUpdate(SuccessMessageMixin, UpdateView):
     def form_valid(self, form):
         list_name = form.cleaned_data['name']
         owner = self.request.user
-        if ShoppingList.objects.filter(name=list_name, owner=owner).exists():
+        list = ShoppingList.objects.filter(name=list_name, owner=owner)
+        if list.exists() and list.first().id != self.kwargs.get('pk'):
             form._errors[' A Shopping List with that name already exists'] = ''
             context = {"form": form}
             context['shopping_lists'] = ShoppingList.objects.filter(owner=owner)
@@ -52,8 +52,7 @@ class ShoppingListUpdate(SuccessMessageMixin, UpdateView):
         return super(ShoppingListUpdate, self).form_valid(form)
 
 
-@method_decorator(login_required, name='dispatch')
-class ShoppingListDelete(SuccessMessageMixin, DeleteView):
+class ShoppingListDelete(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     """Deletion of a shopping list."""
     model = ShoppingList
     template_name = "shopping_lists/delete_list_form.html"

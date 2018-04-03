@@ -2,6 +2,7 @@
 ## About
 This is a web app of a shopping list application that allows users to record things they want
 to purchase and keep track of their shopping. This APP is developed using the Django Framework.
+Find Staging site [here](https://django-shopping-list.herokuapp.com)
 ## Features
 With this APP;
 - You can create a user account - ```/signup/```

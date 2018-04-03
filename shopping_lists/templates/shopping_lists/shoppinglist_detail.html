@@ -19,12 +19,21 @@
                         <form class="form" method="POST"
                               action="">
                             {% csrf_token %}
+                            <label class="form-check-label">
+                                {{ form.name.label }}
+                            </label>
                             <div class="input-group form-group-no-border input-lg">
                                 {{ form.name }}
                             </div>
+                            <label class="form-check-label">
+                                {{ form.price.label }}
+                            </label>
                             <div class="input-group form-group-no-border input-lg">
                                 {{ form.price }}
                             </div>
+                            <label class="form-check-label">
+                                {{ form.quantity.label }}
+                            </label>
                             <div class="input-group form-group-no-border input-lg">
                                 {{ form.quantity }}
                             </div>
@@ -54,7 +63,7 @@
             <a href="{% url 'shopping_lists:dashboard' %}"
                class="btn btn-neutral pull-left">❮ Back to Dashboard</a>
             <div class="card card-plain" style="color:black">
-                <div class="card-body bg-white">
+                <div class="card-body bg-white" style="opacity: .85">
                     {% if form.errors %}
                         <div class="alert alert-danger" role="alert">
                             <div class="container">
@@ -96,8 +105,9 @@
                     <div class="pull-left">
                         <a href="" data-toggle="modal"
                            data-target="#AddList"
-                           class="pull-left btn btn-sm btn-primary btn-floating"><i
-                                class="material-icons">add</i></a>
+                           class="padding-five btn btn-primary btn-round float-right"><i
+                                class="padding-five material-icons">add</i>
+                        </a>
                     </div>
                     <div class="table-responsive ">
                         <table class="table">
@@ -171,7 +181,7 @@
                                                     class="alien-modal-trigger btn btn-danger btn-icon btn-sm "
                                                     title="Delete List."
                                                     data-action="{% url 'shopping_lists:delete_item' item.id %}"
-                                                    data-modal_id="#DeleteItem"
+                                                    data-modal_id="#EditItem"
                                                     data-form_id="#delete-item-form"
                                                     data-list_name={{ item.name }}>
                                                 <i class="now-ui-icons ui-1_simple-remove"></i>
